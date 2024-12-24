@@ -12,6 +12,19 @@ services:
       - "./openhab_userdata:/openhab/userdata"
     environment:
       CRYPTO_POLICY: "unlimited"
-      EXTRA_JAVA_OPTS: "-Duser.timezone=Europe/Berlin"
+      EXTRA_JAVA_OPTS: "-Duser.timezone=America/Sao_Paulo"
       OPENHAB_HTTP_PORT: "8080"
       OPENHAB_HTTPS_PORT: "8443"
+      USER_ID: "9001"
+      GROUP_ID: "9001"
+    # tty: true
+
+  frontail:
+    image: schnuecks/frontail-multi:latest
+    container_name: frontail
+    command: --disable-usage-stats --ui-highlight --ui-highlight-preset /frontail/preset/openhab_AEM.json -t openhab_AEM -l 500 -n 100 /logs/openhab.log /logs/events.log
+    volumes:
+      - "./openhab_userdata/logs:/logs"
+    ports:
+      - "9001:9001"
+    restart: unless-stopped

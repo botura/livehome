@@ -1,0 +1,14 @@
+// Grupos de luzes
+Group:Switch:SUM gLuz
+Group:Switch:SUM g1oAndar               <groundfloor>       (gLuz)
+Group:Switch:SUM g2oAndar               <firstfloor>        (gLuz)
+
+// Grupos de luzes do 1o andar
+Group:Switch:SUM gFachada               <outdoorlight>			(g1oAndar)
+Group:Switch:SUM gSalas  		            <screen>				    (g1oAndar)
+Group:Switch:SUM gCozinha  		          <kitchen>				    (g1oAndar)
+Group:Switch:SUM gQuintal      			    <garden>					  (g1oAndar)
+
+// Grupos de luzes do 2o andar
+Group:Switch:SUM gSuiteMaster       	  <parents_3_3>			  (g2oAndar)
+Group:Switch:SUM gDormitorio		 		    <baby_1>			    	(g2oAndar)

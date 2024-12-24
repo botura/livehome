@@ -1,0 +1,100 @@
+sitemap Residencia label="Exemplo openHAB"
+{
+  // Frame 1o e 2o andar
+  Frame {
+    // 1o andar
+    Text item=g1oAndar label="Térreo [MAP(numero.map):%d]" {
+			Frame {
+        // Frente
+        Text item=gFachada label="Fachada [MAP(numero.map):%d]" {
+          Frame label="Fachada" {
+            Switch item=fachada1 label="Muros lateriais"
+            Switch item=fachada1 label="Fachada"
+            Switch item=garagem1 label="Garagem"
+          }
+          Frame label="De uma só vez" {
+            Switch item=gFachada label="Iluminação [MAP(numero.map):%d]" icon="switch1" mappings=[ON="On", OFF="Off"] 
+          }	
+        }
+        // TV / Jantar
+        Text item=gSalas label="Salas [MAP(numero.map):%d]" {
+          Frame label="Sala de TV" {
+            Switch item=salaTV1 label="Sala de TV"
+            Switch item=lavabo1 label="Lavabo"
+          }
+          Frame label="Sala de jantar" {
+            Switch item=salaJantar1 label="Sala de jantar"
+            Switch item=salaJantar2 label="Spot da sala de jantar"
+          }
+          Frame label="De uma só vez" {
+            Switch item=gSalas label="Iluminação [MAP(numero.map):%d]" icon="switch1" mappings=[ON="On", OFF="Off"] 
+          }	
+        }
+        // Cozinha
+        Text item=gCozinha label="Cozinha [MAP(numero.map):%d]" {
+          Frame label="Cozinha" {
+            Switch item=cozinha1 label="Cozinha"
+            Switch item=areaServico1 label="Área de serviço"
+          }
+          Frame label="De uma só vez" {
+            Switch item=gCozinha label="Iluminação [MAP(numero.map):%d]" icon="switch1" mappings=[ON="On", OFF="Off"] 
+          }	
+        }
+        // Quintal
+        Text item=gQuintal label="Quintal [MAP(numero.map):%d]" {
+          Frame label="Quintal" {
+            Switch item=quintal1 label="Muros lateriais"
+            Switch item=quintal2 label="Jardim"
+          }
+          Frame label="De uma só vez" {
+            Switch item=gQuintal label="Iluminação [MAP(numero.map):%d]" icon="switch1" mappings=[ON="On", OFF="Off"] 
+          }	
+        }
+      }
+      // De uma so vez 1o andar
+      Frame label="De uma só vez" {
+        Switch item=g1oAndar label="Iluminação [MAP(numero.map):%d]" icon="switch1" mappings=[ON="On", OFF="Off"] 
+      }
+    }
+
+    // 2o andar
+    Text item=g2oAndar label="Quartos [MAP(numero.map):%d]" {
+			Frame {
+        // Quarto do casal
+        Text item=gSuiteMaster label="Quarto do casal [MAP(numero.map):%d]" {
+          Frame label="Quarto" {
+            Switch item=suiteMasterLuz1 label="Teto"
+            Switch item=suiteMasterLuz2 label="Abajur"
+          }
+          Frame label="Banheiro" {
+            Switch item=suiteMasterLuz3 label="Banheiro"
+          }
+          Frame label="De uma só vez" {
+            Switch item=gSuiteMaster label="Iluminação [MAP(numero.map):%d]" icon="switch1" mappings=[ON="On", OFF="Off"] 
+          }	
+        }
+        // Quarto do bebe
+        Text item=gDormitorio label="Quarto do bebê [MAP(numero.map):%d]" {
+          Frame label="Quarto" {
+            Switch item=dormitorioLuz1 label="Quarto"
+          }
+          Frame label="Banheiro" {
+            Switch item=dormitorioLuz2 label="Banheiro"
+          }
+          Frame label="De uma só vez" {
+            Switch item=gDormitorio label="Iluminação [MAP(numero.map):%d]" icon="switch1" mappings=[ON="On", OFF="Off"] 
+          }	
+        }
+      }
+      // De uma so vez 2o andar
+      Frame label="De uma só vez" {
+        Switch item=g2oAndar label="Iluminação [MAP(numero.map):%d]" icon="switch1" mappings=[ON="On", OFF="Off"] 
+      }
+    }
+  }
+
+  Frame label="De uma só vez" {
+    Switch item=gLuz label="Iluminação [MAP(numero.map):%d]" icon="switch1" mappings=[ON="On", OFF="Off"] 
+  }	
+
+}

@@ -1,0 +1,26 @@
+{
+  "livehome": {
+    "class": "org.openhab.core.auth.ManagedUser",
+    "value": {
+      "name": "livehome",
+      "passwordHash": "MrV59hUyhwr8vGBGhpA9tnCUf6x3zDexfkRvn0zzi7NsZZKvA+5oLvPmUCM+7KS4Ef975X/n0LQ8rDN4Xw2Dgw\u003d\u003d",
+      "passwordSalt": "BheUkf9EntvVHAHQa72bFCbmVk3N9aotV8LcwjeYw3dWBg9qx4kEQhrMmdHhCzuvdycMVXGDFcyv7H1YeYVcCw\u003d\u003d",
+      "roles": [
+        "administrator"
+      ],
+      "sessions": [
+        {
+          "sessionId": "098ad528-255d-4c1c-9c3b-151155ee6c42",
+          "refreshToken": "434a0ce838674cf090cf5ad0175396ac",
+          "createdTime": "Dec 24, 2024, 9:45:10 AM",
+          "lastRefreshTime": "Dec 24, 2024, 10:24:14 AM",
+          "clientId": "http://localhost:8080",
+          "redirectUri": "http://localhost:8080",
+          "scope": "admin",
+          "sessionCookie": true
+        }
+      ],
+      "apiTokens": []
+    }
+  }
+}

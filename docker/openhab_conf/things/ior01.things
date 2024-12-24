@@ -1,0 +1,20 @@
+Bridge modbus:tcp:ior01 [ host="192.168.0.251", port=502, id=1 ] {
+  Bridge poller coils [ start=16, length=16, refresh=200, type="coil" ] {
+    Thing data io_00 [ readStart="16", readValueType="bit", writeStart="16", writeValueType="bit", writeType="coil" ]
+    Thing data io_01 [ readStart="17", readValueType="bit", writeStart="17", writeValueType="bit", writeType="coil" ]
+    Thing data io_02 [ readStart="18", readValueType="bit", writeStart="18", writeValueType="bit", writeType="coil" ]
+    Thing data io_03 [ readStart="19", readValueType="bit", writeStart="19", writeValueType="bit", writeType="coil" ]
+    Thing data io_04 [ readStart="20", readValueType="bit", writeStart="20", writeValueType="bit", writeType="coil" ]
+    Thing data io_05 [ readStart="21", readValueType="bit", writeStart="21", writeValueType="bit", writeType="coil" ]
+    Thing data io_06 [ readStart="22", readValueType="bit", writeStart="22", writeValueType="bit", writeType="coil" ]
+    Thing data io_07 [ readStart="23", readValueType="bit", writeStart="23", writeValueType="bit", writeType="coil" ]
+    Thing data io_08 [ readStart="24", readValueType="bit", writeStart="24", writeValueType="bit", writeType="coil" ]
+    Thing data io_09 [ readStart="25", readValueType="bit", writeStart="25", writeValueType="bit", writeType="coil" ]
+    Thing data io_10 [ readStart="26", readValueType="bit", writeStart="26", writeValueType="bit", writeType="coil" ]
+    Thing data io_11 [ readStart="27", readValueType="bit", writeStart="27", writeValueType="bit", writeType="coil" ]
+    Thing data io_12 [ readStart="28", readValueType="bit", writeStart="28", writeValueType="bit", writeType="coil" ]
+    Thing data io_13 [ readStart="29", readValueType="bit", writeStart="29", writeValueType="bit", writeType="coil" ]
+    Thing data io_14 [ readStart="30", readValueType="bit", writeStart="30", writeValueType="bit", writeType="coil" ]
+    Thing data io_15 [ readStart="31", readValueType="bit", writeStart="31", writeValueType="bit", writeType="coil" ]
+  }
+}

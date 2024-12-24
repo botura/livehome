@@ -1,0 +1,16 @@
+Switch suiteMasterLuz1        "Quarto do casal"          (gSuiteMaster)     {channel="modbus:data:ior01:coils:io_00:switch", autoupdate="false", alexa="Light"}
+Switch suiteMasterLuz2        "Abajur do casal"          (gSuiteMaster)     {channel="modbus:data:ior01:coils:io_01:switch", autoupdate="false", alexa="Light"}
+Switch suiteMasterLuz3        "Banheiro"                 (gSuiteMaster)     {channel="modbus:data:ior01:coils:io_02:switch", autoupdate="false", alexa="Light"}
+Switch dormitorioLuz1         "Bebê"                     (gDormitorio)      {channel="modbus:data:ior01:coils:io_03:switch", autoupdate="false", alexa="Light"}
+Switch dormitorioLuz2         "Banheiro bebê"            (gDormitorio)      {channel="modbus:data:ior01:coils:io_04:switch", autoupdate="false", alexa="Light"}
+Switch fachada1               "Fachada"                  (gFachada)         {channel="modbus:data:ior01:coils:io_05:switch", autoupdate="false", alexa="Light"}
+Switch fachada2               "Muros da lateral"         (gFachada)         {channel="modbus:data:ior01:coils:io_06:switch", autoupdate="false", alexa="Light"}
+Switch garagem1               "Garagem"                  (gFachada)         {channel="modbus:data:ior01:coils:io_07:switch", autoupdate="false", alexa="Light"}
+Switch salaTV1                "Sala de TV"               (gSalas)           {channel="modbus:data:ior01:coils:io_08:switch", autoupdate="false", alexa="Light"}
+Switch salaJantar1            "Sala de jantar"           (gSalas)           {channel="modbus:data:ior01:coils:io_09:switch", autoupdate="false", alexa="Light"}
+Switch salaJantar2            "Spot da sala de jantar"   (gSalas)           {channel="modbus:data:ior01:coils:io_10:switch", autoupdate="false", alexa="Light"}
+Switch cozinha1               "Cozinha"                  (gCozinha)         {channel="modbus:data:ior01:coils:io_11:switch", autoupdate="false", alexa="Light"}
+Switch areaServico1           "Área de serviço"          (gCozinha)         {channel="modbus:data:ior01:coils:io_12:switch", autoupdate="false", alexa="Light"}
+Switch quintal1               "Muros"                    (gQuintal)         {channel="modbus:data:ior01:coils:io_13:switch", autoupdate="false", alexa="Light"}
+Switch quintal2               "Jardim"                   (gQuintal)         {channel="modbus:data:ior01:coils:io_14:switch", autoupdate="false", alexa="Light"}
+Switch lavabo1                "Lavabo"                   (gSalas)           {channel="modbus:data:ior01:coils:io_15:switch", autoupdate="false", alexa="Light"}
