@@ -1,0 +1,6 @@
+https://werner.rothschopf.net/microcontroller/202401_esp32_wt32_eth01_en.htm
+
+https://templates.blakadder.com/wireless_tag_WT32-ETH01.html
+
+https://github.com/thryvos/Tasmota-WT32-ETH01
+
