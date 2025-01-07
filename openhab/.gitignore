@@ -1,0 +1,7 @@
+logs/
+cache/
+tmp/
+# persistence/
+
+# mapdb/
+# rrd4j/

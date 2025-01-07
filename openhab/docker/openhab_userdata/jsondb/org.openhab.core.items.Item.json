@@ -1,0 +1,98 @@
+{
+  "lApartment": {
+    "class": "org.openhab.core.items.ManagedItemProvider$PersistedItem",
+    "value": {
+      "groupNames": [
+        "lProperty"
+      ],
+      "itemType": "Group",
+      "tags": [
+        "Building"
+      ],
+      "label": "Apartment",
+      "category": "corridor"
+    }
+  },
+  "lBathroom1": {
+    "class": "org.openhab.core.items.ManagedItemProvider$PersistedItem",
+    "value": {
+      "groupNames": [
+        "lApartment"
+      ],
+      "itemType": "Group",
+      "tags": [
+        "Bathroom"
+      ],
+      "label": "Bathroom",
+      "category": "bath"
+    }
+  },
+  "lBedroom1": {
+    "class": "org.openhab.core.items.ManagedItemProvider$PersistedItem",
+    "value": {
+      "groupNames": [
+        "lApartment"
+      ],
+      "itemType": "Group",
+      "tags": [
+        "Bedroom"
+      ],
+      "label": "Main Bedroom",
+      "category": "bedroom_blue"
+    }
+  },
+  "lEntry": {
+    "class": "org.openhab.core.items.ManagedItemProvider$PersistedItem",
+    "value": {
+      "groupNames": [
+        "lApartment"
+      ],
+      "itemType": "Group",
+      "tags": [
+        "Entry"
+      ],
+      "label": "Entry",
+      "category": "corridor"
+    }
+  },
+  "lKitchen": {
+    "class": "org.openhab.core.items.ManagedItemProvider$PersistedItem",
+    "value": {
+      "groupNames": [
+        "lApartment"
+      ],
+      "itemType": "Group",
+      "tags": [
+        "Kitchen"
+      ],
+      "label": "Kitchen",
+      "category": "kitchen"
+    }
+  },
+  "lLivingRoom": {
+    "class": "org.openhab.core.items.ManagedItemProvider$PersistedItem",
+    "value": {
+      "groupNames": [
+        "lApartment"
+      ],
+      "itemType": "Group",
+      "tags": [
+        "LivingRoom"
+      ],
+      "label": "Living Room",
+      "category": "sofa"
+    }
+  },
+  "lProperty": {
+    "class": "org.openhab.core.items.ManagedItemProvider$PersistedItem",
+    "value": {
+      "groupNames": [],
+      "itemType": "Group",
+      "tags": [
+        "Location"
+      ],
+      "label": "Property",
+      "category": "none"
+    }
+  }
+}

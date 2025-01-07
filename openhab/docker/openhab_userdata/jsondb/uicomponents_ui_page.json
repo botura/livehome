@@ -1,0 +1,92 @@
+{
+  "overview": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "overview",
+      "tags": [],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "timestamp": "Dec 24, 2024, 5:50:30 PM",
+      "component": "oh-layout-page",
+      "config": {
+        "label": "Overview"
+      },
+      "slots": {
+        "default": [],
+        "masonry": [
+          {
+            "component": "oh-masonry",
+            "config": {},
+            "slots": {
+              "default": [
+                {
+                  "component": "oh-toggle-card",
+                  "config": {
+                    "item": "salaTV1",
+                    "title": "Sala TV"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "page_a2e8980be8": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "page_a2e8980be8",
+      "tags": [],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "timestamp": "Dec 24, 2024, 5:46:52 PM",
+      "component": "oh-layout-page",
+      "config": {
+        "fixedType": "canvas",
+        "gridEnable": false,
+        "label": "Teste",
+        "layoutType": "fixed"
+      },
+      "slots": {
+        "canvas": [
+          {
+            "component": "oh-canvas-layer",
+            "config": {},
+            "slots": {
+              "default": [
+                {
+                  "component": "oh-canvas-item",
+                  "config": {
+                    "h": 151.0,
+                    "w": 170.0,
+                    "x": 41.0,
+                    "y": 49.0
+                  },
+                  "slots": {
+                    "default": [
+                      {
+                        "component": "oh-toggle-card",
+                        "config": {
+                          "item": "areaServico1",
+                          "title": "Area de serviço"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "default": [],
+        "grid": [],
+        "masonry": []
+      }
+    }
+  }
+}

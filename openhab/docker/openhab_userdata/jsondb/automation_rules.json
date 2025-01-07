@@ -1,0 +1,47 @@
+{
+  "76caa31f5f": {
+    "class": "org.openhab.core.automation.dto.RuleDTO",
+    "value": {
+      "triggers": [],
+      "conditions": [],
+      "actions": [
+        {
+          "inputs": {},
+          "id": "1",
+          "configuration": {
+            "command": "ON",
+            "itemName": "fachada2"
+          },
+          "type": "core.ItemCommandAction"
+        },
+        {
+          "inputs": {},
+          "id": "2",
+          "configuration": {
+            "command": "ON",
+            "itemName": "quintal2"
+          },
+          "type": "core.ItemCommandAction"
+        },
+        {
+          "inputs": {},
+          "id": "3",
+          "configuration": {
+            "command": "ON",
+            "itemName": "fachada1"
+          },
+          "type": "core.ItemCommandAction"
+        }
+      ],
+      "configuration": {},
+      "configDescriptions": [],
+      "uid": "76caa31f5f",
+      "name": "Anoiteceu",
+      "tags": [
+        "Scene"
+      ],
+      "visibility": "VISIBLE",
+      "description": "Acende as luzes externas"
+    }
+  }
+}
