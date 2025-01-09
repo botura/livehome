@@ -1,0 +1,6 @@
+TODO: Driver modbus (berry)
+https://tasmota.github.io/docs/Berry/#tcpserver-class
+
+
+TODO: Script para desabilitar wifi se estiver conectado pelo cabo
+https://tasmota.github.io/docs/Berry-Cookbook/#ethernet-network-flipper
