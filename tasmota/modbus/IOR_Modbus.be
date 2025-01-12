@@ -55,18 +55,24 @@ class Modbus : Driver
     return crc
   end
 
+  # read coil request
+  def readCoils()
+    # create response
+    self.txData = bytes("010102") + self.outputState
+    return self.txData
+  end
+
 
   # analyse received data
-  def analyseData()
+  def analyseReceivedData()
+    var response = bytes()
     if (self.rxData == bytes("0101000000103DC6"))
-      # print("bingo")
-      # create response
-      self.txData = bytes("010102") + self.outputState
-      # add crc16 to response
-      self.txData += self.crc16(self.txData)
-      # send response
-      self.connection.write(self.txData)
+      response = self.readCoils()
     end
+
+    # send response with crc
+    self.connection.write(response + self.crc16(response))
+
   end
 
 
@@ -93,11 +99,11 @@ class Modbus : Driver
       self.rxData = self.connection.readbytes()
       if (self.rxData.size() > 0)
         # data has been received, analyse it
-        self.analyseData()
+        self.analyseReceivedData()
       end
       if (!self.connection.connected())
         # connection is closed
-        print ("Conction closed")
+        print ("Conection closed")
         self.state = self.STATE_CLIENT_DISCONNECTED
         print("Going to STATE_CLIENT_DISCONNECTED")
       end
