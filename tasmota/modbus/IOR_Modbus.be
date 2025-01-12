@@ -1,36 +1,38 @@
-# Drive para modbus
+# Modbus driver
 
-import string
+class Modbus : Driver
+  var server # tcpserver
+  var connection # tcpconnection
+  var state # machine state
+  var rxData # received data
+  var txData # data to send
+  var outputState # output state, ex. bytes("FFFF") mean all outputs are on
 
-class IOR_Modbus : Driver
-  var server
-  var connection
-  var estado
-  var rxData
-  var txData
-
-  var ESTADO_BOOTING
-  var ESTADO_OPEN_SOCKET
-  var ESTADO_WAITING_CLIENT
-  var ESTADO_CLIENT_CONNECTED
-  var ESTADO_CLIENT_DISCONNECTED
-  var ESTADO_CLOSE_SOCKET
+  # states
+  var STATE_BOOTING
+  var STATE_OPEN_SOCKET
+  var STATE_WAITING_CLIENT
+  var STATE_CLIENT_CONNECTED
+  var STATE_CLIENT_DISCONNECTED
+  var STATE_CLOSE_SOCKET
 
 
-  # inicializa o drive
+  # constructor
   def init()
-    self.ESTADO_BOOTING = 0
-    self.ESTADO_OPEN_SOCKET = 1
-    self.ESTADO_WAITING_CLIENT = 2
-    self.ESTADO_CLIENT_CONNECTED = 3
-    self.ESTADO_CLIENT_DISCONNECTED = 4
-    self.ESTADO_CLOSE_SOCKET = 5
+    self.STATE_BOOTING = 0
+    self.STATE_OPEN_SOCKET = 1
+    self.STATE_WAITING_CLIENT = 2
+    self.STATE_CLIENT_CONNECTED = 3
+    self.STATE_CLIENT_DISCONNECTED = 4
+    self.STATE_CLOSE_SOCKET = 5
 
-    self.estado = self.ESTADO_BOOTING
+    self.state = self.STATE_BOOTING
     self.rxData=bytes()
     self.txData=bytes()
-    print("Driver IOR_Modbus inicializado")
+    self.outputState = bytes(-2)
+    print("Modbus driver initialized")
   end
+
 
   # modbus crc16
   # https://gist.github.com/deldrid1/3839697
@@ -53,75 +55,79 @@ class IOR_Modbus : Driver
     return crc
   end
 
-  # var data = bytes("010102FFFF")
-  # var crc = crc16(data)
-  # print("CRC-16: 0x" + crc.tohex())
 
-  # Trata o pacote recebido
-  def trataPacote()
-    # print (str(self.rxData))
+  # analyse received data
+  def analyseData()
     if (self.rxData == bytes("0101000000103DC6"))
       # print("bingo")
-      self.txData = bytes("010102FFFF")
+      # create response
+      self.txData = bytes("010102") + self.outputState
+      # add crc16 to response
       self.txData += self.crc16(self.txData)
-      # self.connection.write(bytes("010102FFFFB84C"))
+      # send response
       self.connection.write(self.txData)
     end
   end
 
-  # Le a primeira saida e atualiza o estado dela mesma, dessa forma o Tasmota atualiza o estado dos 74595
-  def executa()
-    if (self.estado == self.ESTADO_BOOTING)
-      print("ESTADO_BOOTING")
-      # tasmota.log("ESTADO_BOOTING")
 
-      self.estado = self.ESTADO_OPEN_SOCKET
+  # state machine
+  def executeMachineState()
+    if (self.state == self.STATE_BOOTING)
+      print("STATE_BOOTING")
+      self.state = self.STATE_OPEN_SOCKET
       
-    elif (self.estado == self.ESTADO_OPEN_SOCKET)
+    elif (self.state == self.STATE_OPEN_SOCKET)
       self.server = tcpserver(502)
       print(self.server)
-      self.estado = self.ESTADO_WAITING_CLIENT
-      print("Indo para ESTADO_WAITING_CLIENT")
+      self.state = self.STATE_WAITING_CLIENT
+      print("Going to STATE_WAITING_CLIENT")
 
-    elif (self.estado == self.ESTADO_WAITING_CLIENT)
+    elif (self.state == self.STATE_WAITING_CLIENT)
       if (self.server.hasclient())
-        print("Indo para ESTADO_CLIENT_CONNECTED")
+        print("Going to STATE_CLIENT_CONNECTED")
         self.connection = self.server.accept()
-        self.estado = self.ESTADO_CLIENT_CONNECTED
+        self.state = self.STATE_CLIENT_CONNECTED
       end
 
-    elif (self.estado == self.ESTADO_CLIENT_CONNECTED)
+    elif (self.state == self.STATE_CLIENT_CONNECTED)
       self.rxData = self.connection.readbytes()
       if (self.rxData.size() > 0)
-        self.trataPacote()
-        # print (str(self.rxData))
+        # data has been received, analyse it
+        self.analyseData()
       end
-
-      # verifica se a conexão foi encerrada
       if (!self.connection.connected())
-        print ("Conexão encerrada")
-        self.estado = self.ESTADO_CLIENT_DISCONNECTED
-        print("Indo para ESTADO_CLIENT_DISCONNECTED")
-
+        # connection is closed
+        print ("Conction closed")
+        self.state = self.STATE_CLIENT_DISCONNECTED
+        print("Going to STATE_CLIENT_DISCONNECTED")
       end
 
-    elif (self.estado == self.ESTADO_CLIENT_DISCONNECTED)
+    elif (self.state == self.STATE_CLIENT_DISCONNECTED)
       self.connection.close()
-      self.estado = self.ESTADO_WAITING_CLIENT
-      print("Indo para ESTADO_WAITING_CLIENT")
+      self.state = self.STATE_WAITING_CLIENT
+      print("Going to STATE_WAITING_CLIENT")
 
-    elif (self.estado == self.ESTADO_CLOSE_SOCKET)
-      self.estado = self.ESTADO_BOOTING
+    elif (self.state == self.STATE_CLOSE_SOCKET)
+      self.state = self.STATE_BOOTING
     end
   end
 
+  # every_50ms
+  def every_50ms()
+    # update output state
+    for i: 0..15
+      self.outputState.setbits(i, 1, tasmota.get_power()[i])
+    end
+  end
+
+# fast loop
   def fast_loop()
-    # called at each iteration, and needs to be registered separately and explicitly
-    self.executa()
+    self.executeMachineState()
   end
 
 end
 
-iorModbus = IOR_Modbus()
-tasmota.add_driver(iorModbus)
-tasmota.add_fast_loop(/-> iorModbus.fast_loop())    # register a closure to capture the instance of the class as well as the method
+# create instance of IOR_Modbus
+modbus = Modbus()
+tasmota.add_driver(modbus)
+tasmota.add_fast_loop(/-> modbus.fast_loop())
