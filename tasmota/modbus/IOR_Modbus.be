@@ -6,7 +6,6 @@ class IOR_Modbus : Driver
   var server
   var connection
   var estado
-  var efeDelayLoop
   var rxData
   var txData
 
@@ -16,7 +15,6 @@ class IOR_Modbus : Driver
   var ESTADO_CLIENT_CONNECTED
   var ESTADO_CLIENT_DISCONNECTED
   var ESTADO_CLOSE_SOCKET
-  var SCAN_DELAY
 
 
   # inicializa o drive
@@ -28,9 +26,7 @@ class IOR_Modbus : Driver
     self.ESTADO_CLIENT_DISCONNECTED = 4
     self.ESTADO_CLOSE_SOCKET = 5
 
-    self.SCAN_DELAY = 1
     self.estado = self.ESTADO_BOOTING
-    self.efeDelayLoop = 0
     self.rxData=bytes()
     self.txData=bytes()
     print("Driver IOR_Modbus inicializado")
@@ -119,17 +115,13 @@ class IOR_Modbus : Driver
     end
   end
 
-  # executa o drive a cada 50ms
-  def every_50ms()
-    if (self.efeDelayLoop >= self.SCAN_DELAY)
-      self.executa()
-      self.efeDelayLoop = 0
-    end
-    self.efeDelayLoop += 1
-
+  def fast_loop()
+    # called at each iteration, and needs to be registered separately and explicitly
+    self.executa()
   end
 
 end
 
 iorModbus = IOR_Modbus()
 tasmota.add_driver(iorModbus)
+tasmota.add_fast_loop(/-> iorModbus.fast_loop())    # register a closure to capture the instance of the class as well as the method
