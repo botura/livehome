@@ -4,3 +4,10 @@ https://tasmota.github.io/docs/Berry/#tcpserver-class
 
 TODO: Script para desabilitar wifi se estiver conectado pelo cabo
 https://tasmota.github.io/docs/Berry-Cookbook/#ethernet-network-flipper
+
+TODO: Mudar template para ja configurar o 74595 colocando a funcao dos pinos
+https://tasmota.github.io/docs/Components/#tasmota32
+8288	74x595 SRCLK	74x595 Shift register
+8320	74x595 RCLK	74x595 Shift register
+8352	74x595 OE	74x595 Shift register
+8384	74x595 SER	74x595 Shift register
