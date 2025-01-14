@@ -144,11 +144,11 @@ class Modbus : Driver
 
   # every_50ms
   # def every_50ms()
-  #   # update output state
   #   self.updateOutputState()
+  #   self.executeMachineState()
   # end
 
-# fast loop
+  # fast loop
   def fast_loop()
     self.updateOutputState()
     self.executeMachineState()
